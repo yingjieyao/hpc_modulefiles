@@ -1,0 +1,29 @@
+#%Module1.0########
+proc ModulesHelp { } {
+	global version modroot
+	puts stdout "\t loads opencv 2.4.9\n"
+}
+
+module-whatis "loads opencv 2.4.9"
+
+set	version		4.0.0+77-geafd2c8
+set	prefix		/share/apps/Modules
+
+conflict opencv 
+
+prepend-path PATH  /share/apps/Opencv-2.4.9/bin
+prepend-path INCLUDE /share/apps/Opencv-2.4.9/include
+prepend-path LD_LIBRARY_PATH /share/apps/Opencv-2.4.9/lib
+
+if [module-info mode load] {
+	system echo "opencv-2.4.9 is loaded"
+}
+
+if [module-info mode switch2] {
+	system echo "opencv-2.4.9 is loaded"
+}
+
+if [module-info mode remove] {
+	system echo "opencv-2.4.9 is unloaded"
+}
+

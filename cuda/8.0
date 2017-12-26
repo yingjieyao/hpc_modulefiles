@@ -1,0 +1,31 @@
+#%Module1.0########
+proc ModulesHelp { } {
+	global version modroot
+	puts stdout "\t loads cuda-8.0\n"
+}
+
+module-whatis "loads cuda-8.0"
+
+set	version		4.0.0+77-geafd2c8
+set	prefix		/share/apps/Modules
+
+conflict gcc
+
+
+
+prepend-path PATH  /usr/local/cuda/bin
+prepend-path LD_LIBRARY_PATH /usr/local/cuda/lib64
+prepend-path INCLUDE /usr/local/cuda/include
+prepend-path CPATH /usr/local/cuda/include
+prepend-path LIBRARY_PATH /usr/local/cuda/lib64
+
+
+if [ module-info mode load ] {
+	system echo "cuda-8.0 is loaded"
+}
+if [ module-info mode switch2 ] {
+	system echo "cuda-8.0 is loaded"
+}
+if [ module-info mode remove ] {
+	system echo "cuda-8.0 is unloaded"
+}

@@ -1,0 +1,31 @@
+#%Module1.0########
+proc ModulesHelp { } {
+	global version modroot
+	puts stdout "\t loads caffe\n"
+}
+
+module-whatis "loads caffe"
+
+set	version		4.0.0+77-geafd2c8
+set	prefix		/share/apps/Modules
+
+
+prepend-path PATH  /opt/rh/devtoolset-2/root/usr/bin
+module load NCCL/2
+module load cuda/8.0
+module load opencv/2.4.9
+module load MATLAB/R2017a
+
+prepend-path PYTHONPATH /share/package/caffe/python
+prepend-path LD_LIBRARY_PATH /share/apps/caffelib/lib
+
+
+if [ module-info mode load ] {
+	system echo "caffe is loaded"
+}
+if [ module-info mode switch2 ] {
+	system echo "caffe is loaded"
+}
+if [ module-info mode remove ] {
+	system echo "caffe is unloaded"
+}

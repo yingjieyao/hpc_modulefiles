@@ -1,0 +1,34 @@
+#%Module1.0########
+proc ModulesHelp { } {
+	global version modroot
+	puts stdout "\t loads torch\n"
+}
+
+module-whatis "loads torch"
+
+set	version		4.0.0+77-geafd2c8
+set	prefix		/share/apps/Modules
+
+conflict torch
+
+prepend-path PATH  /share/apps/torch/install/bin
+prepend-path LD_LIBRARY_PATH /share/apps/torch/install/lib
+setenv DYLD_LIBRARY_PATH /share/apps/torch/install/lib
+setenv LUA_CPATH "/share/apps/torch/install/lib/?.so;/share/apps/torch/install/lib/lua/5.1/?.so"
+# prepend-path LUA_CPATH /share/apps/torch/lib/lua/5.1/
+# prepend-path LUA_CPATH /share/apps/torch/install/share/lua/5.1
+
+#prepend-path LUA_PATH /share/apps/torch/install/lua/5.1
+setenv LUA_PATH "/share/apps/torch/install/share/lua/5.1/?/init.lua;/share/apps/torch/install/share/lua/5.1/?.lua"
+# prepend-path LUA_PATH /share/apps/torch/install/share/lua/5.1/?.lua
+
+
+if [ module-info mode load ] {
+	system echo "torch is loaded"
+}
+if [ module-info mode switch2 ] {
+	system echo "torch is loaded"
+}
+if [ module-info mode remove ] {
+	system echo "torch is unloaded"
+}

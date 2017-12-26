@@ -1,0 +1,28 @@
+#%Module1.0########
+proc ModulesHelp { } {
+	global version modroot
+	puts stdout "\t loads NCCL 2\n"
+}
+
+module-whatis "loads NCCL2"
+
+set	version		4.0.0+77-geafd2c8
+set	prefix		/share/apps/Modules
+
+conflict NCCL
+
+
+
+prepend-path INCLUDE  /share/apps/NCCL/include
+prepend-path LD_LIBRARY_PATH /share/apps/NCCL/lib
+
+
+if [ module-info mode load ] {
+	system echo "NCCL2 is loaded"
+}
+if [ module-info mode switch2 ] {
+	system echo "NCCL2 is loaded"
+}
+if [ module-info mode remove ] {
+	system echo "NCCL2 is unloaded"
+}

@@ -1,0 +1,23 @@
+#%Module1.0#####################################################################
+##
+## modules modulefile
+##
+proc ModulesHelp { } {
+        global version prefix
+
+        puts stderr "\tmodules - loads the modules software & application environment"
+        puts stderr "\n\tThis adds $prefix/* to several of the"
+        puts stderr "\tenvironment variables."
+        puts stderr "\n\tVersion $version\n"
+}
+
+module-whatis	"loads the modules environment"
+
+# for Tcl script use only
+set	version		4.0.0+77-geafd2c8
+set	prefix		/share/apps/Modules
+
+
+setenv          MODULESHOME	$prefix
+prepend-path    PATH   		/share/apps/Modules/bin
+prepend-path    MANPATH		/share/apps/Modules/share/man
